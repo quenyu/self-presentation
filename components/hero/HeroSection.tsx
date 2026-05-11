@@ -1,37 +1,28 @@
-import { HeroVisual } from "@/components/hero/HeroVisual";
+import { AsciiSignalVisual } from "@/components/hero/AsciiSignalVisual";
 import { navItems } from "@/lib/data";
-
-const heroChips = ["Go backend", "PostgreSQL", "Docker", "REST API", "Visual web"] as const;
-
-const signalStats = [
-  { label: "runtime", value: "Go" },
-  { label: "data", value: "PostgreSQL" },
-  { label: "delivery", value: "Docker" },
-] as const;
 
 export function HeroSection() {
   return (
-    <section id="identity" className="px-3 pb-12 pt-3 sm:px-4 lg:pb-16">
-      <div className="relative mx-auto min-h-[86svh] max-w-[1500px] overflow-hidden rounded-[28px] border border-white/10 bg-[#07080a] shadow-panel-glow">
-        <div className="absolute inset-0">
-          <div className="thin-grid absolute inset-0 opacity-[0.18]" />
-          <div className="absolute inset-x-0 top-0 h-72 bg-[radial-gradient(circle_at_30%_0%,rgba(102,231,255,0.14),transparent_38%),radial-gradient(circle_at_82%_18%,rgba(255,49,49,0.12),transparent_34%)]" />
-          <div className="halftone-panel absolute bottom-0 left-0 h-48 w-full opacity-25" />
-        </div>
+    <section id="identity" className="px-3 pb-5 pt-3 sm:px-4">
+      <div className="relative mx-auto min-h-[90svh] max-w-[1720px] overflow-hidden rounded-[30px] border border-white/10 bg-[#020203] shadow-panel-glow">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_74%_52%,rgba(255,255,255,0.08),transparent_34%),radial-gradient(ellipse_at_20%_95%,rgba(255,49,49,0.08),transparent_28%)]" />
+        <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-white/[0.035] to-transparent" />
+        <AsciiSignalVisual />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-full bg-gradient-to-r from-black via-black/90 to-transparent md:w-[72%]" />
 
-        <header className="relative z-20 flex items-center justify-between gap-4 border-b border-white/10 px-4 py-4 sm:px-6 lg:px-8">
+        <header className="relative z-20 flex items-center justify-between gap-4 px-4 py-4 sm:px-7 lg:px-9">
           <a
             href="#identity"
-            className="font-mono text-sm text-white outline-none transition hover:text-cyan focus-visible:rounded focus-visible:ring-2 focus-visible:ring-cyan/70"
+            className="font-mono text-sm text-white outline-none transition hover:text-white/70 focus-visible:rounded focus-visible:ring-2 focus-visible:ring-white/70"
           >
             quenyu
           </a>
-          <nav className="hidden items-center gap-6 font-mono text-xs text-zinc-400 md:flex" aria-label="Primary">
+          <nav className="hidden items-center gap-7 font-mono text-xs text-white/[0.42] md:flex" aria-label="Primary">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="outline-none transition hover:text-white focus-visible:rounded focus-visible:ring-2 focus-visible:ring-cyan/70"
+                className="outline-none transition hover:text-white focus-visible:rounded focus-visible:ring-2 focus-visible:ring-white/70"
               >
                 {item.label}
               </a>
@@ -39,66 +30,43 @@ export function HeroSection() {
           </nav>
           <a
             href="#contact"
-            className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.045] px-3 py-2 font-mono text-xs text-white outline-none transition hover:border-signal/50 hover:bg-signal/10 focus-visible:ring-2 focus-visible:ring-signal/70"
+            className="flex items-center gap-2 border border-white/[0.14] bg-white/[0.035] px-3 py-2 font-mono text-xs text-white outline-none transition hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white/70"
           >
             <span className="h-2 w-2 rounded-full bg-signal shadow-red-glow" />
             Hire signal
           </a>
         </header>
 
-        <div className="relative z-10 grid gap-6 p-4 sm:p-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:p-8 xl:p-10">
-          <div className="flex flex-col justify-center py-5 lg:min-h-[650px] lg:py-0">
-            <div className="mb-5 flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/[0.045] px-3 py-2 font-mono text-xs text-zinc-300">
-              <span className="h-2 w-2 rounded-full bg-cyan shadow-cyan-glow" />
-              backend / automation / visual web
-            </div>
-
-            <h1 className="max-w-[760px] text-balance text-5xl font-semibold leading-[0.94] text-white sm:text-6xl xl:text-7xl">
+        <div className="relative z-10 flex min-h-[calc(90svh-76px)] items-end px-4 pb-9 pt-28 sm:px-7 sm:pb-12 lg:px-10 lg:pb-14">
+          <div className="max-w-[880px]">
+            <div className="mb-6 font-mono text-xs uppercase text-white/[0.42]">backend / automation / visual web</div>
+            <h1 className="max-w-[900px] text-balance text-5xl font-semibold leading-[0.9] text-white sm:text-7xl lg:text-[92px] xl:text-[106px]">
               Golang backend developer with a cinematic JS interface
             </h1>
 
-            <p className="mt-6 max-w-2xl text-pretty text-base leading-7 text-zinc-300 sm:text-lg">
-              Самопрезентация как интерактивный control plane: Go отвечает за backend-логику,
-              JavaScript — за 3D-сцену, motion и запоминающийся web-интерфейс.
+            <p className="mt-6 max-w-xl text-pretty text-base leading-7 text-white/[0.58] sm:text-lg">
+              Go, PostgreSQL, Docker, automation and visual web interfaces for backend systems.
             </p>
 
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
-                href="#projects"
-                className="inline-flex h-12 items-center justify-center rounded-full bg-white px-5 font-mono text-sm text-black outline-none transition hover:bg-cyan focus-visible:ring-2 focus-visible:ring-cyan/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#07080a]"
+                href="#systems"
+                className="inline-flex h-12 items-center justify-center bg-white px-5 font-mono text-sm text-black outline-none transition hover:bg-white/[0.82] focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
               >
                 See projects -&gt;
               </a>
               <a
-                href="#stack"
-                className="inline-flex h-12 items-center justify-center rounded-full border border-white/12 bg-white/[0.04] px-5 font-mono text-sm text-white outline-none transition hover:border-cyan/60 hover:bg-cyan/10 focus-visible:ring-2 focus-visible:ring-cyan/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#07080a]"
+                href="#systems"
+                className="inline-flex h-12 items-center justify-center border border-white/[0.14] bg-white/[0.03] px-5 font-mono text-sm text-white outline-none transition hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
               >
                 View stack
               </a>
             </div>
-
-            <div className="mt-8 flex max-w-2xl flex-wrap gap-2">
-              {heroChips.map((chip) => (
-                <span
-                  key={chip}
-                  className="rounded-full border border-white/10 bg-black/25 px-3 py-1.5 font-mono text-xs text-zinc-300"
-                >
-                  {chip}
-                </span>
-              ))}
-            </div>
-
-            <div className="mt-8 grid max-w-xl grid-cols-3 gap-3">
-              {signalStats.map((item) => (
-                <div key={item.label} className="rounded-lg border border-white/10 bg-white/[0.035] p-3">
-                  <div className="font-mono text-[11px] uppercase text-zinc-500">{item.label}</div>
-                  <div className="mt-1 text-sm font-semibold text-white">{item.value}</div>
-                </div>
-              ))}
-            </div>
           </div>
+        </div>
 
-          <HeroVisual />
+        <div className="absolute bottom-5 right-6 z-10 hidden font-mono text-[11px] text-white/[0.34] md:block">
+          Go + PostgreSQL / Docker delivery / JS interface
         </div>
       </div>
     </section>

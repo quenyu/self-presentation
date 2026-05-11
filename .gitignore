@@ -20,3 +20,4 @@ yarn-error.log*
 pnpm-debug.log*
 _tmp_*
 dev-server.*.log
+dev-redesign.*.log
