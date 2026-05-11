@@ -4,7 +4,7 @@
 
 :root {
   color-scheme: dark;
-  background: #050506;
+  background: #202020;
 }
 
 * {
@@ -19,12 +19,15 @@ body {
   min-height: 100vh;
   margin: 0;
   overflow-x: hidden;
-  background: #1f1f1f;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.06), transparent 26rem),
+    radial-gradient(circle at 85% 12%, rgba(165, 209, 120, 0.12), transparent 28rem),
+    #202020;
   color: #f7f7f7;
 }
 
 ::selection {
-  background: rgba(102, 231, 255, 0.24);
+  background: rgba(223, 255, 157, 0.34);
   color: #ffffff;
 }
 
@@ -38,21 +41,6 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
-.scanline-overlay {
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 0.04) 0,
-    rgba(255, 255, 255, 0.04) 1px,
-    transparent 1px,
-    transparent 7px
-  );
-  mix-blend-mode: screen;
-  opacity: 0.22;
-}
-
 .text-balance {
   text-wrap: balance;
 }
@@ -61,53 +49,131 @@ a {
   text-wrap: pretty;
 }
 
-.signal-billboard-grid {
+.billboard-shell {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 28px 90px rgba(0, 0, 0, 0.54),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.billboard-canvas {
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.28) 40%, rgba(0, 0, 0, 0.06) 100%),
+    radial-gradient(circle at 74% 38%, rgba(255, 244, 153, 0.95), rgba(205, 238, 112, 0.48) 18%, transparent 37%),
+    radial-gradient(circle at 86% 72%, rgba(132, 206, 83, 0.42), transparent 26%),
+    radial-gradient(circle at 58% 44%, rgba(63, 142, 118, 0.55), transparent 34%),
+    radial-gradient(circle at 42% 64%, rgba(14, 57, 61, 0.88), transparent 40%),
+    linear-gradient(135deg, #07140f 0%, #152a20 42%, #dee78d 100%);
+}
+
+.billboard-canvas::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 62% 18%, rgba(255, 255, 218, 0.48), transparent 18%),
+    radial-gradient(ellipse at 76% 48%, rgba(255, 255, 212, 0.52), transparent 22%),
+    radial-gradient(ellipse at 40% 38%, rgba(18, 56, 57, 0.86), transparent 30%),
+    radial-gradient(ellipse at 22% 72%, rgba(7, 19, 20, 0.94), transparent 35%);
+  filter: saturate(1.1) contrast(1.05);
+}
+
+.billboard-canvas::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.11) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    repeating-linear-gradient(90deg, transparent 0 88px, rgba(0, 0, 0, 0.24) 88px 91px),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 5px);
+  background-size: 104px 100%, 100% 88px, auto, auto;
+  mix-blend-mode: soft-light;
+  opacity: 0.7;
+}
+
+.luminous-fall {
+  position: absolute;
+  right: 12%;
+  top: -5%;
+  width: 24%;
+  height: 112%;
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 231, 0.96), rgba(255, 249, 161, 0.82) 36%, rgba(184, 224, 99, 0.44) 70%, transparent),
+    radial-gradient(ellipse at center, rgba(255, 255, 255, 0.75), transparent 62%);
+  filter: blur(13px);
+  opacity: 0.92;
+  transform: rotate(4deg);
+}
+
+.foliage-blob {
+  position: absolute;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(222, 238, 92, 0.8), rgba(83, 151, 68, 0.42) 48%, transparent 72%);
+  filter: blur(16px);
+  opacity: 0.76;
+}
+
+.soft-grain {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
   background-image:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
-    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.035) 0, rgba(255, 255, 255, 0.035) 1px, transparent 1px, transparent 9px);
-  background-size: 72px 100%, 100% 100%;
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0 1px, transparent 1px),
+    radial-gradient(circle at 75% 65%, rgba(0, 0, 0, 0.12) 0 1px, transparent 1px);
+  background-size: 7px 7px, 11px 11px;
+  opacity: 0.22;
+  mix-blend-mode: overlay;
+}
+
+.lightbox-panel {
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025)),
+    rgba(8, 10, 9, 0.74);
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.34),
+    0 1px 0 rgba(255, 255, 255, 0.08) inset;
+  backdrop-filter: blur(16px);
+}
+
+.mark-star {
+  width: 58px;
+  height: 58px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 50% 50%, transparent 0 22%, #fff 23% 35%, transparent 36%),
+    conic-gradient(from 45deg, #fff 0 12%, transparent 12% 25%, #fff 25% 37%, transparent 37% 50%, #fff 50% 62%, transparent 62% 75%, #fff 75% 87%, transparent 87%);
+}
+
+.scanline-overlay {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.045) 0,
+    rgba(255, 255, 255, 0.045) 1px,
+    transparent 1px,
+    transparent 6px
+  );
+  mix-blend-mode: soft-light;
+  opacity: 0.24;
 }
 
 .halftone-field {
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.72) 0 1.8px, transparent 2.2px);
-  background-size: 13px 13px;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.64) 0 2px, transparent 2.35px);
+  background-size: 14px 14px;
   mask-image: radial-gradient(ellipse at center, #000 0 42%, transparent 72%);
 }
 
-.ascii-signal-bar {
-  position: absolute;
-  display: block;
-  height: 4px;
-  border-radius: 1px;
-  transform-origin: center;
-  animation: signal-flicker 4.8s ease-in-out infinite;
-}
-
-@keyframes signal-flicker {
-  0%,
-  100% {
-    transform: translateX(0) scaleX(1);
-    filter: brightness(1);
-  }
-
-  34% {
-    transform: translateX(2px) scaleX(1.04);
-    filter: brightness(1.18);
-  }
-
-  67% {
-    transform: translateX(-1px) scaleX(0.98);
-    filter: brightness(0.86);
-  }
+.project-line {
+  background: linear-gradient(90deg, transparent, rgba(223, 255, 157, 0.7), transparent);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
+  html {
+    scroll-behavior: auto;
   }
 }
